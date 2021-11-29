@@ -39,7 +39,7 @@ void ARobotCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
 	// Set up "look" bindings.
 	PlayerInputComponent->BindAxis("Turn", this, &ARobotCharacter::AddControllerYawInput);
-	PlayerInputComponent->BindAxis("LookUp", this, &ARobotCharacter::AddControllerPitchInput);
+	// PlayerInputComponent->BindAxis("LookUp", this, &ARobotCharacter::AddControllerPitchInput);
 }
 
 void ARobotCharacter::MoveForward(float Value)
