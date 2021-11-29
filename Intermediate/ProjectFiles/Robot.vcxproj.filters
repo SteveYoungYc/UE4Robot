@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\Robot.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{41CF4E49-178D-4822-B04F-302D248CB584}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Robot.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\RobotEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{4A1B7B71-2757-47A1-ABFE-1B5F0CF85D14}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\Robot">
+      <UniqueIdentifier>{8FBDABFD-5829-4DC2-AB0E-01124D04CC96}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\Robot\Robot.Build.cs">
+      <Filter>Source\Robot</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\Robot\Robot.cpp">
+      <Filter>Source\Robot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Robot\Robot.h">
+      <Filter>Source\Robot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Robot\RobotCharacter.cpp">
+      <Filter>Source\Robot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Robot\RobotCharacter.h">
+      <Filter>Source\Robot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Robot\RobotGameModeBase.cpp">
+      <Filter>Source\Robot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Robot\RobotGameModeBase.h">
+      <Filter>Source\Robot</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

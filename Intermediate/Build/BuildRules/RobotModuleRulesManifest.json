@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\SJTU\\thesis\\Robot\\Source\\Robot\\Robot.Build.cs",
+		"D:\\SJTU\\thesis\\Robot\\Source\\Robot.Target.cs",
+		"D:\\SJTU\\thesis\\Robot\\Source\\RobotEditor.Target.cs"
+	],
+	"EngineVersion": "4.26.1"
+}

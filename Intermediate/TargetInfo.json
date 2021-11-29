@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "Robot",
+			"Path": "D:\\SJTU\\thesis\\Robot\\Source\\Robot.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "RobotEditor",
+			"Path": "D:\\SJTU\\thesis\\Robot\\Source\\RobotEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
