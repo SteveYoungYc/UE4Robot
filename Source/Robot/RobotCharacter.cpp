@@ -8,7 +8,25 @@ ARobotCharacter::ARobotCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	// 创建组件
+	RootComponent = CastChecked<USceneComponent, UCapsuleComponent>(GetCapsuleComponent());
+	StaticMeshComp = CreateDefaultSubobject <UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
+	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 
+	// 绑定组件
+	StaticMeshComp->SetupAttachment(RootComponent);
+	SpringArmComp->SetupAttachment(StaticMeshComp);
+	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
+
+	// 为SpringArm类的变量赋值
+
+	// SpringArmComp->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 50.0f), FRotator(-60.0f, 0.0f, 90.0f));
+	SpringArmComp->TargetArmLength = 200.f;
+	SpringArmComp->bEnableCameraLag = true;
+	SpringArmComp->CameraLagSpeed = 8.0f;
+
+	// AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
 
 // Called when the game starts or when spawned
@@ -27,32 +45,52 @@ void ARobotCharacter::BeginPlay()
 void ARobotCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	FRotator NewRotation = GetActorRotation();
+	NewRotation.Yaw += CameraInput.X;
+	SetActorRotation(NewRotation);
+	NewRotation = SpringArmComp->GetComponentRotation();
+	NewRotation.Pitch = FMath::Clamp(NewRotation.Pitch + CameraInput.Y, -80.0f, -15.0f);
+	SpringArmComp->SetWorldRotation(NewRotation);
+	if (!MovementInput.IsZero())
+	{
+		//Scale our movement input axis values by 100 units per second
+		MovementInput = MovementInput.GetSafeNormal() * 200.0f;
+		FVector NewLocation = GetActorLocation();
+		NewLocation += GetActorForwardVector() * MovementInput.X * DeltaTime;
+		NewLocation += GetActorRightVector() * MovementInput.Y * DeltaTime;
+		SetActorLocation(NewLocation);
+	}
 }
 
 // Called to bind functionality to input
 void ARobotCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	// Set up "movement" bindings.
 	PlayerInputComponent->BindAxis("MoveForward", this, &ARobotCharacter::MoveForward);
-	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
-	// Set up "look" bindings.
-	PlayerInputComponent->BindAxis("Turn", this, &ARobotCharacter::AddControllerYawInput);
-	// PlayerInputComponent->BindAxis("LookUp", this, &ARobotCharacter::AddControllerPitchInput);
+	// PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("CameraPitch", this, &ARobotCharacter::PitchCamera);
+	PlayerInputComponent->BindAxis("CameraYaw", this, &ARobotCharacter::AddControllerYawInput);
 }
 
-void ARobotCharacter::MoveForward(float Value)
+// 输入函数
+void ARobotCharacter::MoveForward(float AxisValue)
 {
-	// Find out which way is "forward" and record that the player wants to move that way.
 	FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
-	AddMovementInput(Direction, Value);
+	AddMovementInput(Direction, AxisValue / 3);
 }
 
-void ARobotCharacter::MoveRight(float Value)
+void ARobotCharacter::MoveRight(float AxisValue)
 {
-	// Find out which way is "right" and record that the player wants to move that way.
 	FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::Y);
-	AddMovementInput(Direction, Value);
+	AddMovementInput(Direction, AxisValue / 3);
 }
 
+void ARobotCharacter::PitchCamera(float AxisValue)
+{
+	CameraInput.Y = AxisValue;
+}
+
+void ARobotCharacter::YawCamera(float AxisValue)
+{
+	CameraInput.X = AxisValue;
+}

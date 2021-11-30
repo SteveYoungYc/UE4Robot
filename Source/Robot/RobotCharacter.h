@@ -4,6 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Camera/CameraComponent.h"
+#include "Components/ArrowComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "RobotCharacter.generated.h"
 
 UCLASS()
@@ -19,18 +23,31 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere)
+		class USpringArmComponent* SpringArmComp;
+
+	UPROPERTY(EditAnywhere)
+		class UCameraComponent* CameraComp;
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* StaticMeshComp;
+
+	// 输入变量
+	FVector2D MovementInput;
+	FVector2D CameraInput;
+	float ZoomFactor;
+	bool bZoomingIn;
+
+	// 输入函数
+	void MoveForward(float AxisValue);
+	void MoveRight(float AxisValue);
+	void PitchCamera(float AxisValue);
+	void YawCamera(float AxisValue);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-	// Handles input for moving forward and backward.
-	UFUNCTION()
-	void MoveForward(float Value);
-
-	// Handles input for moving right and left.
-	UFUNCTION()
-	void MoveRight(float Value);
 };

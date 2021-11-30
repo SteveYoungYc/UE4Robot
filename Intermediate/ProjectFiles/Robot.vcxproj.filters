@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Robot.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{41CF4E49-178D-4822-B04F-302D248CB584}</UniqueIdentifier>
+      <UniqueIdentifier>{7086974A-1ADA-406B-A260-59BDB20F47F5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Robot.Target.cs">
       <Filter>Source</Filter>
@@ -11,8 +11,10 @@
     <None Include="..\..\Source\RobotEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{4A1B7B71-2757-47A1-ABFE-1B5F0CF85D14}</UniqueIdentifier>
+      <UniqueIdentifier>{E575D0A2-E963-48C3-ABFE-073F6BE8577B}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -23,8 +25,11 @@
     <None Include="..\..\Config\DefaultGame.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
     <Filter Include="Source\Robot">
-      <UniqueIdentifier>{8FBDABFD-5829-4DC2-AB0E-01124D04CC96}</UniqueIdentifier>
+      <UniqueIdentifier>{B2C4F203-A6E7-4732-8232-0F2ACDF5F9A5}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Robot\Robot.Build.cs">
       <Filter>Source\Robot</Filter>
@@ -45,6 +50,18 @@
       <Filter>Source\Robot</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\Robot\RobotGameModeBase.h">
+      <Filter>Source\Robot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Robot\RobotPawn.cpp">
+      <Filter>Source\Robot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Robot\RobotPawn.h">
+      <Filter>Source\Robot</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\Robot\RobotPawnMovementComponent.cpp">
+      <Filter>Source\Robot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Robot\RobotPawnMovementComponent.h">
       <Filter>Source\Robot</Filter>
     </ClInclude>
   </ItemGroup>
