@@ -8,6 +8,7 @@
 #include "Components/ArrowComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/BoxComponent.h"
 #include "RobotCharacter.generated.h"
 
 UCLASS()
@@ -28,6 +29,9 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 		class UCameraComponent* CameraComp;
+
+	UPROPERTY(EditAnywhere)
+		class UCameraComponent* FirstPersonCameraComp;
 
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* StaticMeshComp;

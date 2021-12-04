@@ -13,18 +13,20 @@ ARobotCharacter::ARobotCharacter()
 	StaticMeshComp = CreateDefaultSubobject <UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
+	FirstPersonCameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("FPCameraComponent"));
 
 	// 绑定组件
 	StaticMeshComp->SetupAttachment(RootComponent);
 	SpringArmComp->SetupAttachment(StaticMeshComp);
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
+	FirstPersonCameraComp->SetupAttachment(StaticMeshComp);
 
 	// 为SpringArm类的变量赋值
 
 	// SpringArmComp->SetRelativeLocationAndRotation(FVector(0.0f, 0.0f, 50.0f), FRotator(-60.0f, 0.0f, 90.0f));
 	SpringArmComp->TargetArmLength = 200.f;
 	SpringArmComp->bEnableCameraLag = true;
-	SpringArmComp->CameraLagSpeed = 8.0f;
+	SpringArmComp->CameraLagSpeed = 10.0f;
 
 	// AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
