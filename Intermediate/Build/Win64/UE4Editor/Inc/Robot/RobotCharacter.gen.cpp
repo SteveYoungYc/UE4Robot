@@ -20,6 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeRobotCharacter() {}
 	ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FVector();
 // End Cross Module References
 	void ARobotCharacter::StaticRegisterNativesARobotCharacter()
 	{
@@ -50,6 +51,10 @@ void EmptyLinkFunctionForGeneratedCodeRobotCharacter() {}
 		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_StaticMeshComp_MetaData[];
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_StaticMeshComp;
+#if WITH_METADATA
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_positon_MetaData[];
+#endif
+		static const UE4CodeGen_Private::FStructPropertyParams NewProp_positon;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -97,11 +102,19 @@ void EmptyLinkFunctionForGeneratedCodeRobotCharacter() {}
 	};
 #endif
 	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ARobotCharacter_Statics::NewProp_StaticMeshComp = { "StaticMeshComp", nullptr, (EPropertyFlags)0x0020080000080009, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARobotCharacter, StaticMeshComp), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_ARobotCharacter_Statics::NewProp_StaticMeshComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARobotCharacter_Statics::NewProp_StaticMeshComp_MetaData)) };
+#if WITH_METADATA
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_ARobotCharacter_Statics::NewProp_positon_MetaData[] = {
+		{ "Category", "Robot Info" },
+		{ "ModuleRelativePath", "RobotCharacter.h" },
+	};
+#endif
+	const UE4CodeGen_Private::FStructPropertyParams Z_Construct_UClass_ARobotCharacter_Statics::NewProp_positon = { "positon", nullptr, (EPropertyFlags)0x0010000000022015, UE4CodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(ARobotCharacter, positon), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(Z_Construct_UClass_ARobotCharacter_Statics::NewProp_positon_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_ARobotCharacter_Statics::NewProp_positon_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ARobotCharacter_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARobotCharacter_Statics::NewProp_SpringArmComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARobotCharacter_Statics::NewProp_CameraComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARobotCharacter_Statics::NewProp_FirstPersonCameraComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARobotCharacter_Statics::NewProp_StaticMeshComp,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ARobotCharacter_Statics::NewProp_positon,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_ARobotCharacter_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<ARobotCharacter>::IsAbstract,
@@ -130,7 +143,7 @@ void EmptyLinkFunctionForGeneratedCodeRobotCharacter() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ARobotCharacter, 2483696448);
+	IMPLEMENT_CLASS(ARobotCharacter, 2932768226);
 	template<> ROBOT_API UClass* StaticClass<ARobotCharacter>()
 	{
 		return ARobotCharacter::StaticClass();

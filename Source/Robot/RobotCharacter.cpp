@@ -28,6 +28,9 @@ ARobotCharacter::ARobotCharacter()
 	SpringArmComp->bEnableCameraLag = true;
 	SpringArmComp->CameraLagSpeed = 10.0f;
 
+	// CurrentWidget = CreateWidget<UUserWidget>(GetWorld(), StartingWidgetClass);
+	// CurrentWidget->AddToViewport();
+
 	// AutoPossessPlayer = EAutoReceiveInput::Player0;
 }
 
@@ -51,7 +54,7 @@ void ARobotCharacter::Tick(float DeltaTime)
 	NewRotation.Yaw += CameraInput.X;
 	SetActorRotation(NewRotation);
 	NewRotation = SpringArmComp->GetComponentRotation();
-	NewRotation.Pitch = FMath::Clamp(NewRotation.Pitch + CameraInput.Y, -80.0f, -15.0f);
+	NewRotation.Pitch = FMath::Clamp(NewRotation.Pitch + CameraInput.Y, -80.0f, 15.0f);
 	SpringArmComp->SetWorldRotation(NewRotation);
 	if (!MovementInput.IsZero())
 	{
@@ -62,6 +65,7 @@ void ARobotCharacter::Tick(float DeltaTime)
 		NewLocation += GetActorRightVector() * MovementInput.Y * DeltaTime;
 		SetActorLocation(NewLocation);
 	}
+	positon = GetActorTransform().GetLocation() / 100.0f;
 }
 
 // Called to bind functionality to input

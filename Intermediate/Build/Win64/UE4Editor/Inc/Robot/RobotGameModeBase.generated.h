@@ -8,15 +8,24 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UUserWidget;
 #ifdef ROBOT_RobotGameModeBase_generated_h
 #error "RobotGameModeBase.generated.h already included, missing '#pragma once' in RobotGameModeBase.h"
 #endif
 #define ROBOT_RobotGameModeBase_generated_h
 
-#define Robot_Source_Robot_RobotGameModeBase_h_15_SPARSE_DATA
-#define Robot_Source_Robot_RobotGameModeBase_h_15_RPC_WRAPPERS
-#define Robot_Source_Robot_RobotGameModeBase_h_15_RPC_WRAPPERS_NO_PURE_DECLS
-#define Robot_Source_Robot_RobotGameModeBase_h_15_INCLASS_NO_PURE_DECLS \
+#define Robot_Source_Robot_RobotGameModeBase_h_16_SPARSE_DATA
+#define Robot_Source_Robot_RobotGameModeBase_h_16_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execChangeMenuWidget);
+
+
+#define Robot_Source_Robot_RobotGameModeBase_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execChangeMenuWidget);
+
+
+#define Robot_Source_Robot_RobotGameModeBase_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesARobotGameModeBase(); \
 	friend struct Z_Construct_UClass_ARobotGameModeBase_Statics; \
@@ -25,7 +34,7 @@ public: \
 	DECLARE_SERIALIZER(ARobotGameModeBase)
 
 
-#define Robot_Source_Robot_RobotGameModeBase_h_15_INCLASS \
+#define Robot_Source_Robot_RobotGameModeBase_h_16_INCLASS \
 private: \
 	static void StaticRegisterNativesARobotGameModeBase(); \
 	friend struct Z_Construct_UClass_ARobotGameModeBase_Statics; \
@@ -34,7 +43,7 @@ public: \
 	DECLARE_SERIALIZER(ARobotGameModeBase)
 
 
-#define Robot_Source_Robot_RobotGameModeBase_h_15_STANDARD_CONSTRUCTORS \
+#define Robot_Source_Robot_RobotGameModeBase_h_16_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ARobotGameModeBase(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ARobotGameModeBase) \
@@ -47,7 +56,7 @@ private: \
 public:
 
 
-#define Robot_Source_Robot_RobotGameModeBase_h_15_ENHANCED_CONSTRUCTORS \
+#define Robot_Source_Robot_RobotGameModeBase_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ARobotGameModeBase(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
 private: \
@@ -60,28 +69,32 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ARobotGameModeBase); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ARobotGameModeBase)
 
 
-#define Robot_Source_Robot_RobotGameModeBase_h_15_PRIVATE_PROPERTY_OFFSET
-#define Robot_Source_Robot_RobotGameModeBase_h_12_PROLOG
-#define Robot_Source_Robot_RobotGameModeBase_h_15_GENERATED_BODY_LEGACY \
+#define Robot_Source_Robot_RobotGameModeBase_h_16_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__StartingWidgetClass() { return STRUCT_OFFSET(ARobotGameModeBase, StartingWidgetClass); } \
+	FORCEINLINE static uint32 __PPO__CurrentWidget() { return STRUCT_OFFSET(ARobotGameModeBase, CurrentWidget); }
+
+
+#define Robot_Source_Robot_RobotGameModeBase_h_13_PROLOG
+#define Robot_Source_Robot_RobotGameModeBase_h_16_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Robot_Source_Robot_RobotGameModeBase_h_15_PRIVATE_PROPERTY_OFFSET \
-	Robot_Source_Robot_RobotGameModeBase_h_15_SPARSE_DATA \
-	Robot_Source_Robot_RobotGameModeBase_h_15_RPC_WRAPPERS \
-	Robot_Source_Robot_RobotGameModeBase_h_15_INCLASS \
-	Robot_Source_Robot_RobotGameModeBase_h_15_STANDARD_CONSTRUCTORS \
+	Robot_Source_Robot_RobotGameModeBase_h_16_PRIVATE_PROPERTY_OFFSET \
+	Robot_Source_Robot_RobotGameModeBase_h_16_SPARSE_DATA \
+	Robot_Source_Robot_RobotGameModeBase_h_16_RPC_WRAPPERS \
+	Robot_Source_Robot_RobotGameModeBase_h_16_INCLASS \
+	Robot_Source_Robot_RobotGameModeBase_h_16_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define Robot_Source_Robot_RobotGameModeBase_h_15_GENERATED_BODY \
+#define Robot_Source_Robot_RobotGameModeBase_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	Robot_Source_Robot_RobotGameModeBase_h_15_PRIVATE_PROPERTY_OFFSET \
-	Robot_Source_Robot_RobotGameModeBase_h_15_SPARSE_DATA \
-	Robot_Source_Robot_RobotGameModeBase_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	Robot_Source_Robot_RobotGameModeBase_h_15_INCLASS_NO_PURE_DECLS \
-	Robot_Source_Robot_RobotGameModeBase_h_15_ENHANCED_CONSTRUCTORS \
+	Robot_Source_Robot_RobotGameModeBase_h_16_PRIVATE_PROPERTY_OFFSET \
+	Robot_Source_Robot_RobotGameModeBase_h_16_SPARSE_DATA \
+	Robot_Source_Robot_RobotGameModeBase_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	Robot_Source_Robot_RobotGameModeBase_h_16_INCLASS_NO_PURE_DECLS \
+	Robot_Source_Robot_RobotGameModeBase_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

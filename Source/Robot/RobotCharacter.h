@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/BoxComponent.h"
+
 #include "RobotCharacter.generated.h"
 
 UCLASS()
@@ -42,6 +43,7 @@ protected:
 	float ZoomFactor;
 	bool bZoomingIn;
 
+
 	//  ‰»Î∫Ø ˝
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
@@ -49,6 +51,9 @@ protected:
 	void YawCamera(float AxisValue);
 
 public:	
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Transient, Category = "Robot Info")
+		FVector positon;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
