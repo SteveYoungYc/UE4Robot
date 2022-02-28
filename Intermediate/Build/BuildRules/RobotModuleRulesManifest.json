@@ -1,6 +1,8 @@
 {
 	"SourceFiles": [
 		"D:\\SJTU\\thesis\\Robot\\Source\\Robot\\Robot.Build.cs",
+		"D:\\SJTU\\thesis\\Robot\\Plugins\\EAIbot\\Source\\EAIbot\\EAIbot.Build.cs",
+		"D:\\SJTU\\thesis\\Robot\\Plugins\\EAIbot\\Source\\ThirdParty\\EAIbotLibrary\\EAIbotLibrary.Build.cs",
 		"D:\\SJTU\\thesis\\Robot\\Source\\Robot.Target.cs",
 		"D:\\SJTU\\thesis\\Robot\\Source\\RobotEditor.Target.cs"
 	],

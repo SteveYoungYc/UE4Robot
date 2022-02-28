@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\Robot.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{7086974A-1ADA-406B-A260-59BDB20F47F5}</UniqueIdentifier>
+      <UniqueIdentifier>{49C66704-1CF0-4151-9666-EF3FF6E9614F}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\Robot.Target.cs">
       <Filter>Source</Filter>
@@ -14,7 +14,7 @@
     <None Include="..\..\.gitattributes" />
     <None Include="..\..\.gitignore" />
     <Filter Include="Config">
-      <UniqueIdentifier>{E575D0A2-E963-48C3-ABFE-073F6BE8577B}</UniqueIdentifier>
+      <UniqueIdentifier>{250CF9AC-FD12-49E4-BA52-98F73AA62E5A}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -28,9 +28,105 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
-    <Filter Include="Source\Robot">
-      <UniqueIdentifier>{B2C4F203-A6E7-4732-8232-0F2ACDF5F9A5}</UniqueIdentifier>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{54B36F2A-FB2E-476D-9CC5-624D043A0095}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Plugins\EAIbot">
+      <UniqueIdentifier>{8A9B3442-5733-4946-8C60-B872D59DC367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\EAIbot\Source">
+      <UniqueIdentifier>{730DC5E3-E026-4D00-8C8E-62509EE80EA1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\EAIbot\Source\EAIbot">
+      <UniqueIdentifier>{28B4BE81-9282-41A2-A7E2-D9E2C1DFF91E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Source\EAIbot\EAIbot.Build.cs">
+      <Filter>Plugins\EAIbot\Source\EAIbot</Filter>
+    </None>
+    <Filter Include="Plugins\EAIbot\Source\EAIbot\Private">
+      <UniqueIdentifier>{ADBC4406-E6ED-4575-A289-103D9ECC48F9}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\EAIbot\Source\EAIbot\Private\EAIbot.cpp">
+      <Filter>Plugins\EAIbot\Source\EAIbot\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\EAIbot\Source\EAIbot\Public">
+      <UniqueIdentifier>{C8E72606-D0CA-4FE4-BAE3-0E6FFF89229D}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\EAIbot\Source\EAIbot\Public\EAIbot.h">
+      <Filter>Plugins\EAIbot\Source\EAIbot\Public</Filter>
+    </ClInclude>
+    <None Include="..\..\Plugins\EAIbot\EAIbot.uplugin">
+      <Filter>Plugins\EAIbot</Filter>
+    </None>
+    <Filter Include="Plugins\EAIbot\Resources">
+      <UniqueIdentifier>{38DC0D83-A29A-4D04-95F5-EB16EEE9438A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Resources\Icon128.png">
+      <Filter>Plugins\EAIbot\Resources</Filter>
+    </None>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty">
+      <UniqueIdentifier>{D2B3B906-73F0-47B8-A6F8-8B9241E3F2F2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary">
+      <UniqueIdentifier>{B3EC8A55-C6EC-4B69-8F11-2CAF2F0C2C7E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\EAIbotLibrary.Build.cs">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary</Filter>
+    </None>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\EAIbotLibrary.tps">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary</Filter>
+    </None>
+    <ClCompile Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary.cpp">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary.h">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary</Filter>
+    </ClInclude>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary">
+      <UniqueIdentifier>{A123ADE3-08BE-499F-BA5F-E2D62F3E1079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary\ExampleLibrary.xcodeproj">
+      <UniqueIdentifier>{DF202458-8868-499B-9424-2DA1B21A9829}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary\ExampleLibrary.xcodeproj\project.pbxproj">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary\ExampleLibrary.xcodeproj</Filter>
+    </None>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary.xcworkspace">
+      <UniqueIdentifier>{5E4107E8-593D-4196-A1EB-D266B06BE64C}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary.xcworkspace\contents.xcworkspacedata">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\ExampleLibrary.xcworkspace</Filter>
+    </None>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\Mac">
+      <UniqueIdentifier>{F4F3AF53-AFC2-42CE-8C07-D57B8CFBC59D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\Mac\Release">
+      <UniqueIdentifier>{460AC2BC-EFC7-4956-B5A5-5F775A7C9698}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\Mac\Release\libExampleLibrary.dylib">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\Mac\Release</Filter>
+    </None>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\x64">
+      <UniqueIdentifier>{92E18AFA-13FB-4E03-85B1-75763670F7BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\x64\Release">
+      <UniqueIdentifier>{F364D024-EC10-4121-BB9C-D64847E5E612}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\x64\Release\ExampleLibrary.dll">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\x64\Release</Filter>
+    </None>
+    <None Include="..\..\Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\x64\Release\ExampleLibrary.lib">
+      <Filter>Plugins\EAIbot\Source\ThirdParty\EAIbotLibrary\x64\Release</Filter>
+    </None>
+    <Filter Include="Source\Robot">
+      <UniqueIdentifier>{991EDDE5-EF36-404C-B4F1-C1FF4A3EBC8D}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\Robot\RealRobotControl.cpp">
+      <Filter>Source\Robot</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\Robot\RealRobotControl.h">
+      <Filter>Source\Robot</Filter>
+    </ClInclude>
     <None Include="..\..\Source\Robot\Robot.Build.cs">
       <Filter>Source\Robot</Filter>
     </None>

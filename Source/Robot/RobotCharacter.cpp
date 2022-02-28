@@ -44,6 +44,7 @@ void ARobotCharacter::BeginPlay()
 	// Display a debug message for five seconds. 
 	// The -1 "Key" value argument prevents the message from being updated or refreshed.
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("We are using FPSCharacter."));
+	// control.LoadDll();
 }
 
 // Called every frame
@@ -66,6 +67,10 @@ void ARobotCharacter::Tick(float DeltaTime)
 		SetActorLocation(NewLocation);
 	}
 	positon = GetActorTransform().GetLocation() / 100.0f;
+
+	control.move(linearVelocity, angularVelocity);
+	//linearVelocity += 0.01;
+	//angularVelocity += 0.01;
 }
 
 // Called to bind functionality to input
@@ -73,9 +78,11 @@ void ARobotCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	PlayerInputComponent->BindAxis("MoveForward", this, &ARobotCharacter::MoveForward);
-	// PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("CameraPitch", this, &ARobotCharacter::PitchCamera);
-	PlayerInputComponent->BindAxis("CameraYaw", this, &ARobotCharacter::AddControllerYawInput);
+	// PlayerInputComponent->BindAxis("CameraYaw", this, &ARobotCharacter::AddControllerYawInput);
+	// PlayerInputComponent->BindAxis("CameraYaw", this, &ARobotCharacter::YawCamera);
 }
 
 // ÊäÈëº¯Êý
@@ -83,12 +90,15 @@ void ARobotCharacter::MoveForward(float AxisValue)
 {
 	FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::X);
 	AddMovementInput(Direction, AxisValue / 3);
+	linearVelocity = AxisValue;
 }
 
 void ARobotCharacter::MoveRight(float AxisValue)
 {
-	FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::Y);
-	AddMovementInput(Direction, AxisValue / 3);
+	// FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::Y);
+	// AddMovementInput(Direction, AxisValue / 3);
+	// CameraInput.X = AxisValue;
+	angularVelocity = AxisValue;
 }
 
 void ARobotCharacter::PitchCamera(float AxisValue)
@@ -98,5 +108,5 @@ void ARobotCharacter::PitchCamera(float AxisValue)
 
 void ARobotCharacter::YawCamera(float AxisValue)
 {
-	CameraInput.X = AxisValue;
+	angularVelocity = AxisValue;
 }

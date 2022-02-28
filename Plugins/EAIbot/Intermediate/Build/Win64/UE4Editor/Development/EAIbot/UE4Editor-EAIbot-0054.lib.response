@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-EAIbot-0054.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"D:\SJTU\thesis\Robot\Intermediate\Build\Win64\RobotEditor\Development\Core\SharedPCH.Core.ShadowErrors.h.obj"
+"D:\SJTU\thesis\Robot\Plugins\EAIbot\Intermediate\Build\Win64\UE4Editor\Development\EAIbot\EAIbot.cpp.obj"
+"D:\SJTU\thesis\Robot\Plugins\EAIbot\Intermediate\Build\Win64\UE4Editor\Development\EAIbot\Default.rc2.res"
+/OUT:"D:\SJTU\thesis\Robot\Plugins\EAIbot\Intermediate\Build\Win64\UE4Editor\Development\EAIbot\UE4Editor-EAIbot-0054.lib"
+/INCLUDE:IMPLEMENT_MODULE_EAIbot

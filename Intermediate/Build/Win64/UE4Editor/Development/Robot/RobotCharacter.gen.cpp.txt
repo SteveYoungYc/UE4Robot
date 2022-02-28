@@ -20,4 +20,5 @@ D:\Software\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\Sha
 D:\Software\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CapsuleComponent.generated.h
 D:\Software\UE4\UE_4.26\Engine\Source\Runtime\Engine\Classes\Components/BoxComponent.h
 D:\Software\UE4\UE_4.26\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\BoxComponent.generated.h
+D:\SJTU\thesis\Robot\Source\Robot\RealRobotControl.h
 D:\SJTU\thesis\Robot\Intermediate\Build\Win64\UE4Editor\Inc\Robot\RobotCharacter.generated.h

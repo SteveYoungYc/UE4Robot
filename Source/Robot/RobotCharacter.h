@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/BoxComponent.h"
+#include "RealRobotControl.h"
 
 #include "RobotCharacter.generated.h"
 
@@ -42,6 +43,10 @@ protected:
 	FVector2D CameraInput;
 	float ZoomFactor;
 	bool bZoomingIn;
+
+	RealRobotControl control;
+	float linearVelocity = 0;
+	float angularVelocity = 0;
 
 
 	//  ‰»Î∫Ø ˝
