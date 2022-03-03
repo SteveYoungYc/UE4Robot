@@ -47,6 +47,7 @@ protected:
 	RealRobotControl control;
 	float linearVelocity = 0;
 	float angularVelocity = 0;
+	int frameCount = 0;
 
 
 	// ÊäÈëº¯Êı

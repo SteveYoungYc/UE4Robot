@@ -3,8 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-// #include "LoadEAIDll.h"
+#include <windows.h>
+#include <string>
 
+#define BUF_SIZE 4096
+
+struct RobotMsg {
+	float linearVelocity;
+	float angularVelocity;
+};
 
 /**
  * 
@@ -15,6 +22,9 @@ private:
 	float _linearVelocity = 0;
 	float _angularVelocity = 0;
 	FString path;
+	HANDLE hMapFile;
+	LPVOID lpBase;
+	struct RobotMsg robotMsg;
 
 public:
 	RealRobotControl();
@@ -24,7 +34,7 @@ public:
 	}
 	void LoadDll();
 	void VC_DirectionControl(float linearVelocity, float angularVelocity);
-	void move(float linearVelocity, float angularVelocity);
+	void move(float* linearVelocity, float* angularVelocity);
 	~RealRobotControl();
 
 	void ReadTexFile(const FString& relativePath, FString& outString);

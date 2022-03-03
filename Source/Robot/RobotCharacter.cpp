@@ -68,7 +68,9 @@ void ARobotCharacter::Tick(float DeltaTime)
 	}
 	positon = GetActorTransform().GetLocation() / 100.0f;
 
-	control.move(linearVelocity, angularVelocity);
+	frameCount = (frameCount + 1) % 5;
+	if (frameCount == 0)
+		control.move(&linearVelocity, &angularVelocity);
 	//linearVelocity += 0.01;
 	//angularVelocity += 0.01;
 }

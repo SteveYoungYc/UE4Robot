@@ -79,6 +79,7 @@
 "setupapi.lib"
 "dwmapi.lib"
 "imm32.lib"
+"EAIDll.lib"
 /OUT:"D:\SJTU\thesis\Robot\Binaries\Win64\UE4Editor-Robot-0005.dll"
 /IMPLIB:"D:\SJTU\thesis\Robot\Intermediate\Build\Win64\UE4Editor\Development\Robot\UE4Editor-Robot-0005.suppressed.lib"
 /PDB:"D:\SJTU\thesis\Robot\Binaries\Win64\UE4Editor-Robot-0005.pdb"
