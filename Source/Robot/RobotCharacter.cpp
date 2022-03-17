@@ -51,6 +51,7 @@ void ARobotCharacter::BeginPlay()
 void ARobotCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	/*
 	FRotator NewRotation = GetActorRotation();
 	NewRotation.Yaw += CameraInput.X;
 	SetActorRotation(NewRotation);
@@ -66,11 +67,14 @@ void ARobotCharacter::Tick(float DeltaTime)
 		NewLocation += GetActorRightVector() * MovementInput.Y * DeltaTime;
 		SetActorLocation(NewLocation);
 	}
-	positon = GetActorTransform().GetLocation() / 100.0f;
-
+	// positonOutput = GetActorTransform().GetLocation() / 100.0f;
+	positonOutput = positonInput;
+	*/
 	frameCount = (frameCount + 1) % 5;
 	if (frameCount == 0)
 		control.move(&linearVelocity, &angularVelocity);
+
+	moveTo(DeltaTime, 0, 0);
 	//linearVelocity += 0.01;
 	//angularVelocity += 0.01;
 }
@@ -111,4 +115,22 @@ void ARobotCharacter::PitchCamera(float AxisValue)
 void ARobotCharacter::YawCamera(float AxisValue)
 {
 	angularVelocity = AxisValue;
+}
+
+void ARobotCharacter::moveTo(float DeltaTime, float x, float y)
+{
+	FVector NewLoacation = GetActorLocation();
+	// 防止浮点无限大导致不精确,每2*PI一个循环
+	if (RunningTime >= 2 * PI)
+	{
+		RunningTime = 0;
+	}
+	// 获取高度变化曲线
+	float DeltaHeight = FMath::Sin(RunningTime);
+	// DeltaTime是上一帧和下一帧之间使用的时间
+	RunningTime += DeltaTime;
+
+	// 20是沿着Z轴的伸缩变化值
+	NewLoacation.Z += DeltaHeight /** 20.f*/;
+	SetActorLocation(NewLoacation);
 }

@@ -32,12 +32,6 @@ public:
 		_linearVelocity = linearVelocity;
 		_angularVelocity = angularVelocity;
 	}
-	void LoadDll();
-	void VC_DirectionControl(float linearVelocity, float angularVelocity);
 	void move(float* linearVelocity, float* angularVelocity);
 	~RealRobotControl();
-
-	void ReadTexFile(const FString& relativePath, FString& outString);
-
-	void SaveTexFile(const FString& relativePath, const FString& inString);
 };

@@ -48,6 +48,7 @@ protected:
 	float linearVelocity = 0;
 	float angularVelocity = 0;
 	int frameCount = 0;
+	float RunningTime = 0;
 
 
 	//  ‰»Î∫Ø ˝
@@ -56,10 +57,14 @@ protected:
 	void PitchCamera(float AxisValue);
 	void YawCamera(float AxisValue);
 
+	void moveTo(float DeltaTime, float x, float y);
+
 public:	
 	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Transient, Category = "Robot Info")
-		FVector positon;
+		FVector positonOutput;
 
+	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Transient, Category = "Robot Info")
+		FVector positonInput;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
