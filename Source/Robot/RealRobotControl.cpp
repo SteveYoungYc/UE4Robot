@@ -31,7 +31,7 @@ void RealRobotControl::move(float* linearVelocity, float* angularVelocity)
 	FString string = FString::SanitizeFloat(*linearVelocity) + " " + FString::SanitizeFloat(*angularVelocity);
 	// SaveTexFile(path, str);
 	std::string str = std::to_string(*linearVelocity) + " " + std::to_string(*angularVelocity);
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, string);
+	// GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Green, string);
 	// char str[BUF_SIZE];
 	//strncpy(str, (char*)linearVelocity, sizeof(float));
 	//strncpy(str + 8, (char*)angularVelocity, sizeof(float));

@@ -9,6 +9,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/BoxComponent.h"
+#include "Components/InterpToMovementComponent.h"
 #include "RealRobotControl.h"
 
 #include "RobotCharacter.generated.h"
@@ -38,6 +39,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 		UStaticMeshComponent* StaticMeshComp;
 
+	UPROPERTY(EditAnywhere)
+		UInterpToMovementComponent* MovementComp;
+
 	// 输入变量
 	FVector2D MovementInput;
 	FVector2D CameraInput;
@@ -49,6 +53,7 @@ protected:
 	float angularVelocity = 0;
 	int frameCount = 0;
 	float RunningTime = 0;
+	float speed = 20;
 
 
 	// 输入函数
@@ -57,14 +62,17 @@ protected:
 	void PitchCamera(float AxisValue);
 	void YawCamera(float AxisValue);
 
-	void moveTo(float DeltaTime, float x, float y);
+	void MoveTo(float DeltaTime, FVector pos);
 
 public:	
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Transient, Category = "Robot Info")
+	UPROPERTY(VisibleAnywhere, Transient, Category = "Robot Info")
 		FVector positonOutput;
 
-	UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Transient, Category = "Robot Info")
+	UPROPERTY(VisibleAnywhere, Transient, Category = "Robot Info")
 		FVector positonInput;
+
+	UPROPERTY(VisibleAnywhere, Transient, Category = "Robot Info")
+		FRotator rotationOutput;
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 

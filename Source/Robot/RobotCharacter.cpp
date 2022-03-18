@@ -8,9 +8,11 @@ ARobotCharacter::ARobotCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	MovementComp = CreateDefaultSubobject<UInterpToMovementComponent>(TEXT("UInterpToMovementComponent"));
+	AddInstanceComponent(MovementComp);
 	// 创建组件
 	RootComponent = CastChecked<USceneComponent, UCapsuleComponent>(GetCapsuleComponent());
-	StaticMeshComp = CreateDefaultSubobject <UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+	StaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	FirstPersonCameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("FPCameraComponent"));
@@ -20,6 +22,7 @@ ARobotCharacter::ARobotCharacter()
 	SpringArmComp->SetupAttachment(StaticMeshComp);
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
 	FirstPersonCameraComp->SetupAttachment(StaticMeshComp);
+	// MovementComp->SetupAttachment(RootComponent)
 
 	// 为SpringArm类的变量赋值
 
@@ -43,15 +46,20 @@ void ARobotCharacter::BeginPlay()
 
 	// Display a debug message for five seconds. 
 	// The -1 "Key" value argument prevents the message from being updated or refreshed.
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("We are using FPSCharacter."));
-	// control.LoadDll();
+	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("We are using RobotCharacter."));
+	positonInput = FVector::ZeroVector;
+	/*
+	MovementComp->SetUpdatedComponent(RootComponent);
+	MovementComp->AddControlPointPosition(FVector::ZeroVector);
+	MovementComp->AddControlPointPosition(FVector(100, 0, -1.82));
+	MovementComp->BehaviourType = EInterpToBehaviourType::PingPong;
+	MovementComp->FinaliseControlPoints();*/
 }
 
 // Called every frame
 void ARobotCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	/*
 	FRotator NewRotation = GetActorRotation();
 	NewRotation.Yaw += CameraInput.X;
 	SetActorRotation(NewRotation);
@@ -67,16 +75,17 @@ void ARobotCharacter::Tick(float DeltaTime)
 		NewLocation += GetActorRightVector() * MovementInput.Y * DeltaTime;
 		SetActorLocation(NewLocation);
 	}
-	// positonOutput = GetActorTransform().GetLocation() / 100.0f;
-	positonOutput = positonInput;
-	*/
-	frameCount = (frameCount + 1) % 5;
-	if (frameCount == 0)
+
+	positonOutput = RootComponent->GetComponentLocation() / 100.0f;
+	rotationOutput = RootComponent->GetComponentRotation();
+	frameCount = (frameCount + 1) % 60;
+	if (frameCount % 5 == 0)
 		control.move(&linearVelocity, &angularVelocity);
 
-	moveTo(DeltaTime, 0, 0);
-	//linearVelocity += 0.01;
-	//angularVelocity += 0.01;
+	FVector pos(100, 100, RootComponent->GetComponentLocation().Z);
+
+	MoveTo(DeltaTime, pos);
+
 }
 
 // Called to bind functionality to input
@@ -87,8 +96,6 @@ void ARobotCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("CameraPitch", this, &ARobotCharacter::PitchCamera);
-	// PlayerInputComponent->BindAxis("CameraYaw", this, &ARobotCharacter::AddControllerYawInput);
-	// PlayerInputComponent->BindAxis("CameraYaw", this, &ARobotCharacter::YawCamera);
 }
 
 // 输入函数
@@ -117,20 +124,23 @@ void ARobotCharacter::YawCamera(float AxisValue)
 	angularVelocity = AxisValue;
 }
 
-void ARobotCharacter::moveTo(float DeltaTime, float x, float y)
+void ARobotCharacter::MoveTo(float DeltaTime, FVector pos)
 {
-	FVector NewLoacation = GetActorLocation();
-	// 防止浮点无限大导致不精确,每2*PI一个循环
-	if (RunningTime >= 2 * PI)
-	{
-		RunningTime = 0;
-	}
-	// 获取高度变化曲线
-	float DeltaHeight = FMath::Sin(RunningTime);
-	// DeltaTime是上一帧和下一帧之间使用的时间
-	RunningTime += DeltaTime;
+	/*
+	MovementComp->SetUpdatedComponent(StaticMeshComp);
+	// MovementComp->ControlPoints.Empty();
+	MovementComp->AddControlPointPosition(StaticMeshComp->GetComponentLocation(), false);
+	MovementComp->AddControlPointPosition(pos, true);
+	MovementComp->FinaliseControlPoints();*/
+	// MovementComp->RestartMovement();
 
-	// 20是沿着Z轴的伸缩变化值
-	NewLoacation.Z += DeltaHeight /** 20.f*/;
-	SetActorLocation(NewLoacation);
+	FVector currPos = RootComponent->GetComponentLocation();
+	float dis = FVector::Distance(pos, currPos);
+	if (dis > 0.5) {
+		float distanceSingle = speed * DeltaTime;
+		float cos = (pos.X - currPos.X) / dis;
+		float sin = (pos.Y - currPos.Y) / dis;
+		FVector nextPos(currPos.X + distanceSingle * cos, currPos.Y + distanceSingle * sin, currPos.Z);
+		RootComponent->SetWorldLocation(nextPos);
+	}
 }
