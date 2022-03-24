@@ -40,11 +40,19 @@ protected:
 		UStaticMeshComponent* StaticMeshComp;
 
 	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* CameraStaticMeshComp;
+
+	UPROPERTY(EditAnywhere)
+		UStaticMeshComponent* GimbalStaticMeshComp;
+
+	UPROPERTY(EditAnywhere)
 		UInterpToMovementComponent* MovementComp;
 
 	//  ‰»Î±‰¡ø
 	FVector2D MovementInput;
 	FVector2D CameraInput;
+	FVector2D GimbalYawInput;
+	FVector2D GimbalPitchInput;
 	float ZoomFactor;
 	bool bZoomingIn;
 
@@ -61,6 +69,8 @@ protected:
 	void MoveRight(float AxisValue);
 	void PitchCamera(float AxisValue);
 	void YawCamera(float AxisValue);
+	void GimbalYaw(float AxisValue);
+	void GimbalPitch(float AxisValue);
 
 	void MoveTo(float DeltaTime, FVector pos);
 

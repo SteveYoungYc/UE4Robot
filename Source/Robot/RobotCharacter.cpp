@@ -12,16 +12,20 @@ ARobotCharacter::ARobotCharacter()
 	AddInstanceComponent(MovementComp);
 	// 创建组件
 	RootComponent = CastChecked<USceneComponent, UCapsuleComponent>(GetCapsuleComponent());
-	StaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+	StaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ChassisStaticMeshComponent"));
+	CameraStaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("CameraStaticMeshComponent"));
+	GimbalStaticMeshComp = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("GimbalStaticMeshComponent"));
 	SpringArmComp = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArmComponent"));
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComponent"));
 	FirstPersonCameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("FPCameraComponent"));
 
 	// 绑定组件
 	StaticMeshComp->SetupAttachment(RootComponent);
+	GimbalStaticMeshComp->SetupAttachment(RootComponent);
+	CameraStaticMeshComp->SetupAttachment(GimbalStaticMeshComp);
 	SpringArmComp->SetupAttachment(StaticMeshComp);
 	CameraComp->SetupAttachment(SpringArmComp, USpringArmComponent::SocketName);
-	FirstPersonCameraComp->SetupAttachment(StaticMeshComp);
+	FirstPersonCameraComp->SetupAttachment(CameraStaticMeshComp);
 	// MovementComp->SetupAttachment(RootComponent)
 
 	// 为SpringArm类的变量赋值
@@ -76,6 +80,16 @@ void ARobotCharacter::Tick(float DeltaTime)
 		SetActorLocation(NewLocation);
 	}
 
+	FRotator GimbalYawRotation = GimbalStaticMeshComp->GetRelativeRotation();
+	GimbalYawRotation.Yaw += GimbalYawInput.X;
+	GimbalStaticMeshComp->SetRelativeRotation(GimbalYawRotation);
+
+	FRotator GimbalPitchRotation = CameraStaticMeshComp->GetRelativeRotation();
+	if (GimbalPitchRotation.Pitch + GimbalPitchInput.Y < 80 && GimbalPitchRotation.Pitch + GimbalPitchInput.Y > -80) {
+		GimbalPitchRotation.Pitch += GimbalPitchInput.Y;
+		CameraStaticMeshComp->SetRelativeRotation(GimbalPitchRotation);
+	}
+
 	positonOutput = RootComponent->GetComponentLocation() / 100.0f;
 	rotationOutput = RootComponent->GetComponentRotation();
 	frameCount = (frameCount + 1) % 60;
@@ -84,7 +98,7 @@ void ARobotCharacter::Tick(float DeltaTime)
 
 	FVector pos(100, 100, RootComponent->GetComponentLocation().Z);
 
-	MoveTo(DeltaTime, pos);
+	// MoveTo(DeltaTime, pos);
 
 }
 
@@ -96,6 +110,8 @@ void ARobotCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::AddControllerYawInput);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ARobotCharacter::MoveRight);
 	PlayerInputComponent->BindAxis("CameraPitch", this, &ARobotCharacter::PitchCamera);
+	PlayerInputComponent->BindAxis("GimbalYaw", this, &ARobotCharacter::GimbalYaw);
+	PlayerInputComponent->BindAxis("GimbalPitch", this, &ARobotCharacter::GimbalPitch);
 }
 
 // 输入函数
@@ -122,6 +138,16 @@ void ARobotCharacter::PitchCamera(float AxisValue)
 void ARobotCharacter::YawCamera(float AxisValue)
 {
 	angularVelocity = AxisValue;
+}
+
+void ARobotCharacter::GimbalYaw(float AxisValue)
+{
+	GimbalYawInput.X = AxisValue;
+}
+
+void ARobotCharacter::GimbalPitch(float AxisValue)
+{
+	GimbalPitchInput.Y = AxisValue;
 }
 
 void ARobotCharacter::MoveTo(float DeltaTime, FVector pos)

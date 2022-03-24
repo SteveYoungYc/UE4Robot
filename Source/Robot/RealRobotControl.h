@@ -24,6 +24,9 @@ private:
 	FString path;
 	HANDLE hMapFile;
 	LPVOID lpBase;
+
+	HANDLE hMapFile1;
+	LPVOID lpBase1;
 	struct RobotMsg robotMsg;
 
 public:
