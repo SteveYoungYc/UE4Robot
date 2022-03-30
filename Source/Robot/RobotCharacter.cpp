@@ -96,9 +96,9 @@ void ARobotCharacter::Tick(float DeltaTime)
 	if (frameCount % 5 == 0)
 		control.move(&linearVelocity, &angularVelocity);
 
-	FVector pos(100, 100, RootComponent->GetComponentLocation().Z);
+	FVector pos(100, 200, RootComponent->GetComponentLocation().Z);
 
-	// MoveTo(DeltaTime, pos);
+	MoveTo(DeltaTime, pos);
 
 }
 

@@ -5,13 +5,8 @@
 #include "CoreMinimal.h"
 #include <windows.h>
 #include <string>
+#include "SharedMemory.h"
 
-#define BUF_SIZE 4096
-
-struct RobotMsg {
-	float linearVelocity;
-	float angularVelocity;
-};
 
 /**
  * 
@@ -22,12 +17,7 @@ private:
 	float _linearVelocity = 0;
 	float _angularVelocity = 0;
 	FString path;
-	HANDLE hMapFile;
-	LPVOID lpBase;
-
-	HANDLE hMapFile1;
-	LPVOID lpBase1;
-	struct RobotMsg robotMsg;
+	SharedMemory shared_memory;
 
 public:
 	RealRobotControl();
