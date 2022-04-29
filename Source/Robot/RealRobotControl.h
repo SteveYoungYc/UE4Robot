@@ -26,6 +26,6 @@ public:
 		_angularVelocity = angularVelocity;
 	}
 	void move(float* linearVelocity, float* angularVelocity);
-	FVector getNextPos();
+	Msg getMsg();
 	~RealRobotControl();
 };

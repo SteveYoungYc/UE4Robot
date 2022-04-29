@@ -21,15 +21,12 @@ void RealRobotControl::move(float* linearVelocity, float* angularVelocity)
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, string);
 }
 
-FVector RealRobotControl::getNextPos() {
+Msg RealRobotControl::getMsg() {
 	shared_memory.open(L"RealRobotAsServer");
 	Msg msg;
 	shared_memory.read(&msg);
-	FVector pos(msg.pos.x, msg.pos.y, msg.pos.z);
-	FString string = FString::SanitizeFloat(msg.pos.x) + " " + FString::SanitizeFloat(msg.pos.y);
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, string);
 	shared_memory.close();
-	return pos;
+	return msg;
 }
 
 RealRobotControl::~RealRobotControl()
